@@ -24,7 +24,7 @@ not sure if ```5.0``` is a float
 ```+=``` and ```-=``` and ```*=``` and ```/=``` are a thing
 >civilized
 
-## escape characters
+# escape characters
 
 | code | output |
 |:---:|:---|
@@ -52,10 +52,50 @@ this is important when definding html tags
 var myStr = '<a href="http://www.example.com" target="_blank">Link</a>';
 ```
 
-```String``` can be treated like a char array, except it is *immutable*, cannot be altered after creation. the variable holding a string can, however, be changed
-
-can get length of a string with ```.length```
+```String``` can be treated like a char array
 ```javascript
 var firstName = "Charles";
 var firstLetter = firstName[0]; // firstLetter is "C"
 ```
+
+except they is *immutable*, cannot be altered after creation. the variable holding a string can, however, be changed
+
+can get length of a string with ```.length```
+# Arrays
+
+arrays can hold stuff of different types, including other arrays, to make a multidimentional array
+
+arrays *are mutabe* so you can do this:
+```javascript
+var ourArray = [50,40,30];
+ourArray[0] = 15; // equals [15,40,30]
+```
+
+```.push(x)``` can be used to add data (x) to the end of an array
+
+```.pop()``` returns the last index of an array and removes it from that array
+
+```javascript
+var threeArr = [1, 4, 6];
+var oneDown = threeArr.pop();
+console.log(oneDown); // Returns 6
+console.log(threeArr); // Returns [1, 4]
+```
+
+```.shift()``` works like pop except it returns and removes the first index of an array
+
+```.unshift(x)``` is like push but it adds elements to the front of an array
+
+> okay this is actually dumb now, you have multiple methods doing the same shit. just make some goddamn overloads
+
+# Functions
+
+functions look like this:
+
+```javascript
+function testFun(param1, param2) {
+  console.log(param1, param2);
+}
+```
+
+you may or may not be able to define a global variable without a ```var``` its not clear.
