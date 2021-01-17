@@ -1,7 +1,5 @@
 # Javascript Notes
 
-``` === ``` is the comparison operator instead of ```==```
-
 variables are ```undefined``` upon declaration
 >*(boo~!, untyped variables)*
 
@@ -88,6 +86,7 @@ console.log(threeArr); // Returns [1, 4]
 
 > okay this is actually dumb now, you have multiple methods doing the same shit. just make some goddamn overloads
 
+
 # Functions
 
 functions look like this:
@@ -99,3 +98,29 @@ function testFun(param1, param2) {
 ```
 
 you may or may not be able to define a global variable without a ```var``` its not clear.
+
+```return``` returns, dont need a declaration in the signature
+
+functions without a ```return``` return a value of ```undefined```
+
+Strict equality ```===``` is the counterpart to the equality operator ```==```. However, unlike the equality operator, which attempts to convert both values being compared to a common type, the strict equality operator does not perform a type conversion.
+
+```javascript
+3 === 3   // true
+3 === '3' // false
+3 == 3    // true
+3 == '3'  // true
+
+// same goes for nonequal
+1 !=  2     // true
+1 != "2"    // true
+
+3 !==  3   // false
+3 !== '3'  // true
+4 !==  3   // true
+
+```
+
+```typeof``` can determine the type of a variable
+
+```case``` values are tested with strict equality ```===```
