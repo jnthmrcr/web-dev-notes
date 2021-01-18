@@ -135,3 +135,92 @@ Strict equality ```===``` is the counterpart to the equality operator ```==```. 
 ```typeof``` can determine the type of a variable
 
 ```case``` values are tested with strict equality ```===```
+
+# Objects (JSON)
+
+Objects are similar to arrays, except that instead of using indexes to access and modify their data, you access the data in objects through what are called properties.
+> feels like kvp, dictionaries/hashmaps
+
+```javascript
+var cat = {
+  "name": "Whiskers",
+  "legs": 4,
+  "tails": 1,
+  "enemies": ["Water", "Dogs"]
+};
+```
+properties get typecasted to strings if you dont manually do this
+
+properties can be accessed with dot notation ```.``` or bracket notation ```[]``` bracket notation is required if a property has a space in its name
+
+```javascript
+var myObj = {
+  prop1: "val1",
+  prop2: "val2"
+};
+var prop1val = myObj.prop1; // val1
+var prop2val = myObj["prop2"]; // val2
+```
+
+```javascript
+var someObj = {
+  propName: "John"
+};
+function propPrefix(str) {
+  var s = "prop";
+  return s + str;
+}
+var someProp = propPrefix("Name"); // someProp now holds the value 'propName'
+console.log(someObj[someProp]); // "John"
+```
+
+you can add and delete properties after object creation
+
+```javascript
+var ourDog = {
+  "name": "Camper",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["everything!"],
+  "bark": "bow-wow"
+};
+
+outDog.paws = "toe beans" // new property "paws"
+delete ourDog.bark; // deleted property "bark"
+```
+
+can check if property exists with .hasOwnProperty(x)
+```javascript
+objects can be used in place of switches/elseif statements if all inputs are known
+
+var myObj = {
+  top: "hat",
+  bottom: "pants"
+};
+myObj.hasOwnProperty("top");    // true
+myObj.hasOwnProperty("middle"); // false
+```
+
+> This is just json fuck my life
+
+> "javascript object notation" fuck my life
+
+can store data and shit idk
+
+```javascript
+var ourStorage = {
+  "desk": {
+    "drawer": "stapler"
+  },
+  "cabinet": {
+    "top drawer": { 
+      "folder1": "a file",
+      "folder2": "secrets"
+    },
+    "bottom drawer": "soda"
+  }
+};
+ourStorage.cabinet["top drawer"].folder2;  // "secrets"
+ourStorage.desk.drawer; // "stapler"
+```
+
