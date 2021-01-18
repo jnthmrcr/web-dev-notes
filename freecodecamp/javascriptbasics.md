@@ -86,7 +86,18 @@ console.log(threeArr); // Returns [1, 4]
 
 > okay this is actually dumb now, you have multiple methods doing the same shit. just make some goddamn overloads
 
-
+The Array#join() function creates a new string from concatenating all elements in an array. For example:
+```javascript
+['Hello', ' ', 'World'].join(''); // 'Hello World'
+```
+The first parameter to join() is called the separator. By default, the separator is a single comma ','. But you can pass in any separator you want. for example, "/" for URL fragments
+```javascript
+['a', 'b', 'c'].join(); // 'a,b,c'
+// 'Twas the night before Christmas'
+['Twas', 'the', 'night', 'before', 'Christmas'].join(' ');
+// 'masteringjs.io/tutorials/fundamentals/string-concat'
+['masteringjs.io', 'tutorials', 'fundamentals', 'string-concat'].join('/');
+```
 # Functions
 
 functions look like this:
