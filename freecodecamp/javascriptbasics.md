@@ -224,3 +224,81 @@ ourStorage.cabinet["top drawer"].folder2;  // "secrets"
 ourStorage.desk.drawer; // "stapler"
 ```
 
+# iterating (loops/recursion)
+```for ([initialization]; [condition]; [final-expression])```
+
+The condition statement is evaluated at the beginning of every loop iteration and will continue as long as it evaluates to true. When condition is false at the start of the iteration, the loop will stop executing. This means if condition starts as false, your loop will never execute.
+
+recursion
+all my homies hate recursion
+```javascript
+function multiply(arr, n) {
+    var product = 1;
+    for (var i = 0; i < n; i++) {
+        product *= arr[i];
+    }
+    return product;
+}
+function multiply(arr, n) {
+    if (n <= 0) {
+        return 1;
+    } else {
+        return multiply(arr, n - 1) * arr[n - 1];
+    }
+}
+```
+Recursive functions must have a base case when they return without calling the function again (in this example, when n <= 0), otherwise they can never finish executing.
+
+```javascript
+function rangeOfNumbers(startNum, endNum) {
+  if (startNum == endNum) {
+    return [startNum];
+  } else {
+    const arr = rangeOfNumbers(startNum, endNum - 1);
+    arr.push(endNum);
+    return arr;
+  }
+};
+```
+> goes from start num to end
+
+# Random
+
+```Math.random()``` generates a random decimal number between 0 (inclusive) and not quite up to 1 (exclusive).
+
+random range:
+
+```javascript
+Math.floor(Math.random() * (max - min + 1)) + min
+```
+
+```parseInt()``` parses a string and returns an integer.
+```javascript
+var a = parseInt("007"); // returns int 7
+```
+It takes a second argument for the radix, which specifies the base of the number in the string. The radix can be an integer between 2 and 36.
+```javascript
+var a = parseInt("11", 2); // returns int 3
+```
+
+``` javascript
+function findGreaterOrEqual(a, b) {
+  if (a === b) {
+    return "a and b are equal";
+  }
+  else if (a > b) {
+    return "a is greater";
+  }
+  else {
+    return "b is greater";
+  }
+}
+```
+The above function can be re-written using multiple conditional operators:
+```javascript
+function findGreaterOrEqual(a, b) {
+  return (a === b) ? "a and b are equal" 
+    : (a > b) ? "a is greater" 
+    : "b is greater";
+}
+```
