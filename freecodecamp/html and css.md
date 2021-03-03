@@ -31,7 +31,7 @@ basic outline:
 	</ol>
 
 	<form action="https://freecatphotoapp.com/submit-cat-photo">
-		<!-- label "for" atrb matches input "id" -->
+		<!-- label "for" attribute matches input "id" attribute -->
 		<!-- "checked" sets item to be checked by default -->
 		<label for="indoor"><input id="indoor" type="radio" name="indoor-outdoor" value="indoor" checked> Indoor</label>
 		<label for="outdoor"><input id="outdoor" type="radio" name="indoor-outdoor" value="outdoor"> Outdoor</label>
@@ -52,9 +52,16 @@ basic outline:
 
 </body>
 ```
-## html tags
+# Accessibility
 
 main, header, footer, nav, video, article, section
+
+alt atribute is used to provide screen reader text/description of image/seo
+
+```<img src="visualDecoration.jpeg" alt="">```
+
+leave alt blank ```""``` for decorative images or images explined elsewhere in text
+
 
 
 # css notes:
