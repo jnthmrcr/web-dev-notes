@@ -258,3 +258,103 @@ const bicycle = {
   }
 };
 ```
+
+# Classes
+a different way of creating objects. looks like classes from c based languages but is really just a javascript object??? idk.
+
+classes have constructors that initialize stuff
+```javascript
+class Vegetable { constructor(name) {this.name = name;}}
+
+const carrot = new Vegetable('carrot');
+console.log(carrot.name); // Should display 'carrot'
+```
+
+getter and setter methods can be used to modify private variables
+
+```javascript
+class Thermostat {
+  constructor(fahrenheit) {this.fahrenheit  = fahrenheit;}
+  get temperature() {return 5.0/9.0 * (this.fahrenheit - 32);}
+  set temperature(celsius) {this.fahrenheit = celsius * 9.0 / 5.0 + 32;}
+}
+
+const thermos = new Thermostat(76); // Setting in Fahrenheit scale
+let temp = thermos.temperature; // 24.44 in Celsius
+thermos.temperature = 26;
+temp = thermos.temperature; // 26 in Celsius
+```
+
+# Modules (import & export)
+
+code can be reused by making it a module (set its type attrib to "module")
+```javascript
+<script type="module" src="index.js"></script>
+```
+A script that uses this module type can now use the import and export features
+```javascript
+export const add = (x, y) => { return x + y; }
+// or
+const add = (x, y) => { return x + y; }
+export { add };
+// can export multiple things
+export { add, subtract };
+```
+functions that have been exported from one script can be imported into another
+```javascript
+import { add, subtract } from './math_functions.js';
+add(2,2) // 4
+subtract(2,1) // 1
+```
+
+The static import statement is used to import read only live bindings which are exported by another module.
+
+you can use ```import * as``` to import every exported function from a file
+```javascript
+import * as myMathModule from "./math_functions.js";
+myMathModule.add(2,3);
+myMathModule.subtract(5,3);
+```
+default export lets you do stuff? can be anonynous and renamed on import?/??
+```javascript
+export default function add(x, y) {
+  return x + y;
+}
+
+export default function(x, y) {
+  return x + y;
+}
+```
+```javascript
+import add from './my-module.js';
+```
+The imported value, ```add```, is not surrounded by curly braces. ```add``` here is simply a variable name for whatever the default export of the ```math_functions.js``` file is.
+
+# Javascript Promise
+used with asynchronous bs. When the task completes, you either fulfill your promise or fail to do so.
+
+```Promise``` is a constructor function, so you need to use the ```new``` keyword to create one.
+```javascript
+const myPromise = new Promise((resolve, reject) => { });
+```
+promise should receive a function with ```resolve``` and ```reject``` as parameters. (in this example) The example above uses strings for the argument of these functions, but it can really be anything. Often, it might be an object, that you would use data from, to put on your website or elsewhere.
+
+A promise has three states: ```pending```, ```fulfilled```, and ```rejected```
+```javascript
+const makeServerRequest = new Promise((resolve, reject) => {
+  // responseFromServer represents a response from a server
+  let responseFromServer;
+    
+  if(responseFromServer) {
+    resolve("We got the data");
+  } else {  
+    reject("Data not received");
+  }
+});
+
+makeServerRequest.then(result => { console.log(result); });
+makeServerRequest.catch(error => { console.log(error); });
+```
+The ```then``` method is executed immediately after your promise is fulfilled with ```resolve```
+
+```catch``` is the method used when your promise has been rejected. It is executed immediately after a promise's ```reject``` method is called
