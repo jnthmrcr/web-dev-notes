@@ -115,3 +115,120 @@ let chewieQuote = "Aaaaaaaaaaaaaaaarrrgh";
 let chewieRegex = /Aa*r+g+h+/;
 ```
 
+# Greedy vs Lazy matching
+
+a `greedy` match finds the longest possible part of a string that fits the regex pattern and returns it as a match. The alternative is called a `lazy` match, which finds the smallest possible part of the string that satisfies the regex pattern.
+
+`?` switches to lazy matching
+```javascript
+let text = "<h1>Winter is coming</h1>";
+let resultLazy = text.match(/<.*?>/); // "<h1>"
+let resultGred = test.match(/<.*>/); // "<h1>Winter is coming</h1>"
+```
+
+# Match Beginning and Ending String Patterns
+use `^` outside of character set to search for patterns at the beginning of strings.
+```javascript
+let rickyAndCal = "Cal and Ricky both like racing.";
+let calRegex = /^Cal/;
+let result = calRegex.test(rickyAndCal); // true
+```
+
+You can search the end of strings using the dollar sign character `$` at the end of the regex.
+```javascript
+let theEnding = "This is a never ending story";
+let storyRegex = /story$/;
+storyRegex.test(theEnding); // true
+let noEnding = "Sometimes a story will have to end";
+storyRegex.test(noEnding); // false
+```
+
+# shortcuts
+
+## alphanumeric
+>`\w`
+```javascript
+let longHand = /[A-Za-z0-9_]+/;
+let shortHand = /\w+/;
+```
+
+## nonalphanumeric
+>`\W`
+```javascript
+let longHand = /[^A-Za-z0-9_]/;
+let shortHand = /\W/;
+```
+
+## digits
+>`\d`
+```javascript
+let longHand = /[0-9]/;
+let shortHand = /\d/;
+```
+
+## nondigits
+>`\D`
+```javascript
+let longHand = /[^0-9]/;
+let shortHand = /\D/;
+```
+
+## whitespace
+>`\s`
+```javascript
+let longHand = /[^ \r\t\f\n\v]/;
+let shortHand = /\S/;
+```
+
+## nonwhitespace
+>`\S`
+```javascript
+let longHand = /[\r\t\f\n\v]/;
+let shortHand = /\s/;
+```
+
+```javascript
+let username = "JackOfAllTrades";
+let userCheck = /^[a-z][a-z]+\d*$|^[a-z]\d\d+$/i;
+let result = userCheck.test(username);
+```
+
+
+>- Usernames can only use alpha-numeric characters.
+>- The only numbers in the username have to be at the end. There can be zero or more of them at the end. Username cannot start with the number.
+>- Username letters can be lowercase and uppercase.
+>- Usernames have to be at least two characters long. A two-character username can only use alphabet letters as characters.
+
+# Quantity Specifiers
+You can specify the lower and upper number of patterns with quantity specifiers
+
+```javascript
+let A4 = "aaaah";
+let A2 = "aah";
+let multipleA = /a{3,5}h/; // appearing between `3` and `5` times in the string `ah`
+multipleA.test(A4); // true
+multipleA.test(A2); // false
+```
+To only specify the lower number of patterns, keep the first number followed by a comma.
+```javascript
+let A4 = "haaaah";
+let A2 = "haah";
+let A100 = "h" + "a".repeat(100) + "h";
+let multipleA = /ha{3,}h/; // minimum of 3 'a's
+multipleA.test(A4); // true
+multipleA.test(A2); // false
+multipleA.test(A100); // true
+```
+```javascript
+let multipleHA = /ha{3}h/; // only 3 'a's
+```
+
+# All or none
+You can specify the possible existence of an element with a question mark, ?. This checks for zero or one of the preceding element. You can think of this symbol as saying the previous element is optional.
+```javascript
+let american = "color";
+let british = "colour";
+let rainbowRegex= /colou?r/;
+rainbowRegex.test(american); // true
+rainbowRegex.test(british); // true
+```
