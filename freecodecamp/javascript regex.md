@@ -186,13 +186,12 @@ let shortHand = /\S/;
 let longHand = /[\r\t\f\n\v]/;
 let shortHand = /\s/;
 ```
-
+# wow cool
 ```javascript
 let username = "JackOfAllTrades";
 let userCheck = /^[a-z][a-z]+\d*$|^[a-z]\d\d+$/i;
 let result = userCheck.test(username);
 ```
-
 
 >- Usernames can only use alpha-numeric characters.
 >- The only numbers in the username have to be at the end. There can be zero or more of them at the end. Username cannot start with the number.
@@ -231,4 +230,45 @@ let british = "colour";
 let rainbowRegex= /colou?r/;
 rainbowRegex.test(american); // true
 rainbowRegex.test(british); // true
+```
+
+# Positive and Negative Lookahead
+positive lookahead will look to make sure the element in the search pattern is there, but won't actually match it.
+>`(?=...)`
+
+negative lookahead will look to make sure the element in the search pattern is not there
+>`(?!...)`
+
+```javascript
+let quit = "qu";
+let noquit = "qt";
+let quRegex= /q(?=u)/;
+let qRegex = /q(?!u)/;
+quit.match(quRegex); // q, not qu
+noquit.match(qRegex); // q
+```
+A more practical use of lookaheads is to check two or more patterns in one string. Here is a simple password checker that looks for between 3 and 6 characters and at least one number:
+```javascript
+let password = "abc123";
+let checkPass = /(?=\w{3,6})(?=\D*\d)/;
+checkPass.test(password);
+```
+>match passwords that are greater than 5 characters long
+
+>and have two consecutive digits.
+```javascript
+let sampleWord = "abc123";
+let pwRegex = /(?=\w{6,})(?=\w*\d{2})/; // ???
+let result = pwRegex.test(sampleWord);
+```
+
+# Check For Mixed Grouping of Characters
+```javascript
+let testStr = "Pumpkin";
+let testRegex = /P(engu|umpk)in/;
+testRegex.test(testStr); // true
+
+let myString = "Eleanor Roosevelt";
+let myRegex = /(Franklin|Eleanor).*Roosevelt/; // allow for middle names
+let result = myRegex.test(myString); // true, idk
 ```
