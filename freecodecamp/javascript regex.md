@@ -272,3 +272,35 @@ let myString = "Eleanor Roosevelt";
 let myRegex = /(Franklin|Eleanor).*Roosevelt/; // allow for middle names
 let result = myRegex.test(myString); // true, idk
 ```
+# Capture Groups
+Parentheses, `(` and `)`, are used to find repeat substrings. You put the regex of the pattern that will repeat in between the parentheses.
+
+To specify where that repeat string will appear, you use a backslash (`\`) and then a number. This number starts at 1 and increases with each additional capture group you use. An example would be `\1` to match the first group.
+
+>match a string that consists of only the same number repeated exactly three times separated by single spaces.
+```javascript
+let repeatNum = "42 42 42";
+let reRegex = /^(\d+)\s\1\s\1$/;
+// start, digits, space, same digits, space, same digits, end
+let result = reRegex.test(repeatNum);
+```
+
+# Search and Replace
+```javascript
+let wrongText = "The sky is silver.";
+let silverRegex = /silver/;
+wrongText.replace(silverRegex, "blue"); // The sky is blue.
+
+// access capture groups in the replacement string with dollar signs ($).
+"Code Camp".replace(/(\w+)\s(\w+)/, '$2 $1'); // Camp Code
+
+let str = "one two three";
+let fixRegex = /(one)\s(two)\s(three)/;
+let replaceText = "$3 $2 $1";
+let result = str.replace(fixRegex, replaceText); // three two one
+
+// trim whitespace at beginning and end
+let hello = "   Hello, World!  ";
+let wsRegex = /^\s+|\s+$/g;
+let result = hello.replace(wsRegex, "");
+```
