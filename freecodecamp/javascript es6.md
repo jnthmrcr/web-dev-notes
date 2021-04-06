@@ -120,6 +120,7 @@ const greeting = (name = "Anonymous") => "Hello " + name;
 console.log(greeting("John")); // Hello John
 console.log(greeting()); // Hello Anonymous
 ```
+## rest parameter
 the rest parameter (`...`) you can create functions that take a variable number of arguments and stores them to an array
 ```javascript
 function howMany(...args) {
@@ -128,6 +129,7 @@ function howMany(...args) {
 console.log(howMany(0, 1, 2)); // You have passed 3 arguments.
 console.log(howMany("string", null, [1, 2, 3], { })); // You have passed 4 arguments.
 ```
+## spread operator
 `...` is also the spread operator. which "expands" or "unpacks" an array
 ```javascript
 const arr = [6, 89, 3, 45];

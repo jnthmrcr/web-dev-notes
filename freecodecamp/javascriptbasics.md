@@ -68,9 +68,9 @@ arrays *are mutabe* so you can do this:
 var ourArray = [50,40,30];
 ourArray[0] = 15; // equals [15,40,30]
 ```
-
+## push
 ```.push(x)``` can be used to add data (x) to the end of an array
-
+## pop
 ```.pop()``` returns the last index of an array and removes it from that array
 
 ```javascript
@@ -79,13 +79,30 @@ var oneDown = threeArr.pop();
 console.log(oneDown); // Returns 6
 console.log(threeArr); // Returns [1, 4]
 ```
-
+## shift
 ```.shift()``` works like pop except it returns and removes the first index of an array
-
+## unshift
 ```.unshift(x)``` is like push but it adds elements to the front of an array
 
 > okay this is actually dumb now, you have multiple methods doing the same shit. just make some goddamn overloads
 
+>actually thats just called splice
+## splice
+```.splice(first, count, add1, add2)``` lets us remove any number of consecutive elements from anywhere in an array.
+
+splice()'s first parameter represents the index on the array from which to begin removing elements, while the second parameter indicates the number of elements to delete. For example:
+```javascript
+let array = ['today', 'was', 'not', 'so', 'great'];
+array.splice(2, 2, 'really'); // ['today', 'was', 'really, 'great']
+```
+can add 1 or more elements to the array, starting at the first index
+## slice
+`.slice(first, last)` copies or extracts a given number of elements to a new array, leaving the array it is called upon untouched. the first parameter is the index at which to begin extraction, and the second is the index at which to stop extraction (extraction will occur up to, but not including the element at this index
+
+# indexOf
+`indexOf()` takes an element as a parameter, and when called, it returns the position, or index, of that element, or -1 if the element does not exist on the array.
+
+## join
 The Array#join() function creates a new string from concatenating all elements in an array. For example:
 ```javascript
 ['Hello', ' ', 'World'].join(''); // 'Hello World'
