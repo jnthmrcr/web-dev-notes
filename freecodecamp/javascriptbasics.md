@@ -178,7 +178,7 @@ var myObj = {
 var prop1val = myObj.prop1; // val1
 var prop2val = myObj["prop2"]; // val2
 ```
-
+braket notation can also be used to pass in properties stored in variables
 ```javascript
 var someObj = {
   propName: "John"
@@ -206,6 +206,9 @@ outDog.paws = "toe beans" // new property "paws"
 delete ourDog.bark; // deleted property "bark"
 ```
 
+# Check if an Object has a Property
+
+## hasOwnProperty()
 can check if property exists with .hasOwnProperty(x)
 ```javascript
 objects can be used in place of switches/elseif statements if all inputs are known
@@ -216,6 +219,12 @@ var myObj = {
 };
 myObj.hasOwnProperty("top");    // true
 myObj.hasOwnProperty("middle"); // false
+```
+
+## 'in' keyword
+```javascript
+users.hasOwnProperty('Alan'); // true
+'Alan' in users; // true
 ```
 
 > This is just json fuck my life
@@ -240,13 +249,40 @@ var ourStorage = {
 ourStorage.cabinet["top drawer"].folder2;  // "secrets"
 ourStorage.desk.drawer; // "stapler"
 ```
+# Object.keys()
+Generate an Array of All Object Keys with `Object.keys()`
+```javascript
+function getArrayOfUsers(obj) {
+  return Object.keys(obj);
+}
+```
 
 # iterating (loops/recursion)
+
+## basic for loop
 ```for ([initialization]; [condition]; [final-expression])```
 
 The condition statement is evaluated at the beginning of every loop iteration and will continue as long as it evaluates to true. When condition is false at the start of the iteration, the loop will stop executing. This means if condition starts as false, your loop will never execute.
 
-recursion
+## for in loop
+```javascript
+for (let user in users) {
+  console.log(user);
+}
+
+function countOnline(usersObj) {
+  let onlineCount = 0;
+  for (let user in usersObj) {
+	// idk what datatype user is supposed to be i thought it was an object
+    if (usersObj[user].online === true) onlineCount++;
+	// but no?
+  }
+  console.log(onlineCount);
+  return onlineCount;
+}
+```
+
+## recursion
 all my homies hate recursion
 ```javascript
 function multiply(arr, n) {
