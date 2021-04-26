@@ -95,10 +95,15 @@ splice()'s first parameter represents the index on the array from which to begin
 let array = ['today', 'was', 'not', 'so', 'great'];
 array.splice(2, 2, 'really'); // ['today', 'was', 'really, 'great']
 ```
-can add 1 or more elements to the array, starting at the first index
-## slice
-`.slice(first, last)` copies or extracts a given number of elements to a new array, leaving the array it is called upon untouched. the first parameter is the index at which to begin extraction, and the second is the index at which to stop extraction (extraction will occur up to, but not including the element at this index
+If the second argument is not provided, the default is to remove items through the end.
 
+can add 1 or more elements to the array, starting at the first index
+
+the `splice` method mutates the original array it is called on.
+## slice
+`.slice(first, last)` copies or extracts a given number of elements to a new array, leaving the array it is called upon untouched. the first parameter is the index at which to begin extraction, and the second is the index at which to stop extraction (extraction will occur up to, but not including the element at this index)(non-inclusive)
+
+the `slice` method does not mutate the original array it is called on.
 # indexOf
 `indexOf()` takes an element as a parameter, and when called, it returns the position, or index, of that element, or -1 if the element does not exist on the array.
 
