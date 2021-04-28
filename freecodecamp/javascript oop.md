@@ -121,3 +121,57 @@ for (let prop in beagle) {
 console.log(ownProps); // 'name'
 console.log(prototypeProps); // 'numLegs'
 ```
+
+adding more than a few properties is a pain... A more efficient way is to set the `prototype` to a new object that already contains the properties. This way, the properties are added all at once:
+
+```javascript
+Bird.prototype = {
+  numLegs: 2, 
+  eat: function() {
+    console.log("nom nom nom");
+  },
+  describe: function() {
+    console.log("My name is " + this.name);
+  }
+};
+```
+
+## Constructor Property
+```javascript
+let duck = new Bird();
+let beagle = new Dog();
+
+console.log(duck.constructor === Bird); // true
+console.log(beagle.constructor === Dog); // true
+```
+Note that the `constructor` property is a reference to the constructor function that created the instance. The advantage of the `constructor` property is that it's possible to check for this property to find out what kind of object it is.
+
+Since the `constructor` property can be overwritten it’s generally better to use the `instanceof` method to check the type of an object.
+
+manually setting the prototype erases the constructor property. To fix this, whenever a prototype is manually set to a new object, remember to define the constructor property:
+```javascript
+Bird.prototype = {
+  constructor: Bird,
+  numLegs: 2,
+  eat: function() {
+    console.log("nom nom nom");
+  },
+  describe: function() {
+    console.log("My name is " + this.name); 
+  }
+};
+```
+
+## isPrototypeOf()
+an object inherits its `prototype` directly from the constructor function that created it. 
+```javascript
+function Bird(name) {
+  this.name = name;
+}
+let duck = new Bird("Donald");
+Bird.prototype.isPrototypeOf(duck); // true
+```
+
+All objects in JavaScript (with a few exceptions) have a `prototype`. Also, an object’s `prototype` itself is an object. Because a `prototype` is an object, a `prototype` can have its own `prototype`!
+
+> shut the fuck up. please. just. shut the fuck up
