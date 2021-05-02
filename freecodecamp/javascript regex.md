@@ -39,6 +39,25 @@ let codingRegex = /coding/;
 let result = extractStr.match(codingRegex); // returns "coding"
 ```
 
+# Replace
+The `replace()` method returns a new string with some or all matches of a pattern replaced by a replacement. The pattern can be a string or a RegExp, and the replacement can be a string or a function to be called for each match. If pattern is a string, only the first occurrence will be replaced.
+```javascript
+const p = 'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?';
+console.log(p.replace('dog', 'monkey'));
+// expected output: "The quick brown fox jumps over the lazy monkey. If the dog reacted, was it really lazy?"
+
+function convertHTML(str) {
+  let htmlChars = {
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&apos;"
+  }
+  return str.replace(/[&<>"']/g, x => htmlChars[x]);
+}
+```
+
 # global (g) flag
 
 To search or extract a pattern more than once, you can use the ```g``` flag.
@@ -261,6 +280,18 @@ let sampleWord = "abc123";
 let pwRegex = /(?=\w{6,})(?=\w*\d{2})/; // ???
 let result = pwRegex.test(sampleWord);
 ```
+
+# Positive and Negative Lookbehind
+Lookbehind has the same effect, but works backwards. It tells the regex engine to temporarily step backwards in the string, to check if the text inside the lookbehind can be matched there.
+
+`(?<!a)b` matches a `“b”` that is not preceded by an `“a”`, using negative lookbehind.
+
+It doesn’t match `cab`, but matches the `b` (and only the `b`) in `bed` or `debt`.
+
+`(?<=a)b` (positive lookbehind) matches the `b` (and only the `b`) in `cab`, but does not match `bed` or `debt`.
+
+The construct for positive lookbehind is `(?<=text)`: a pair of parentheses, with the opening parenthesis followed by a question mark, “less than” symbol, and an equals sign.
+Negative lookbehind is written as `(?<!text)`, using an exclamation point instead of an equals sign. 
 
 # Check For Mixed Grouping of Characters
 ```javascript
