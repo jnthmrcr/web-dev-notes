@@ -195,16 +195,17 @@ let shortHand = /\D/;
 ## whitespace
 >`\s`
 ```javascript
-let longHand = /[^ \r\t\f\n\v]/;
-let shortHand = /\S/;
+let longHand = /[\r\t\f\n\v]/;
+let shortHand = /\s/;
 ```
 
 ## nonwhitespace
 >`\S`
 ```javascript
-let longHand = /[\r\t\f\n\v]/;
-let shortHand = /\s/;
+let longHand = /[^ \r\t\f\n\v]/;
+let shortHand = /\S/;
 ```
+
 # wow cool
 ```javascript
 let username = "JackOfAllTrades";
